@@ -6,7 +6,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.prismals.setup {}
-
+lspconfig.texlab.setup {}
 
 lspconfig.cssls.setup {
     capabilities = capabilities
@@ -33,7 +33,6 @@ lspconfig.clangd.setup {
     filetypes = { "c", "cpp", "objc", "objcpp" },
     root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git") or vim.fn.getcwd(),
 }
-
 -- Go
 lspconfig.gopls.setup {}
 

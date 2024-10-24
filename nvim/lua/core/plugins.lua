@@ -17,6 +17,40 @@ require("lazy").setup({
     {'hrsh7th/cmp-path'},
     {'hrsh7th/cmp-cmdline'},
     {'hrsh7th/nvim-cmp'},
-    {"williamboman/mason.nvim", build = ":MasonUpdate"}
+    {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvim-tree/nvim-web-devicons",
+          "MunifTanjim/nui.nvim",
+        }
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
+    },
+    {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'
+        }
+    },
+    {'nvim-tree/nvim-web-devicons'},
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
+    {"williamboman/mason.nvim", build = ":MasonUpdate"},
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            -- add any options here
+        }
+    },
   }
 )
