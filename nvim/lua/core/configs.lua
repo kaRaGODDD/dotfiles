@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>qq", ":q!<CR>") -- выйти без сохране
 vim.keymap.set("n", "<leader>ww", ":w<CR>") -- сохранить
 vim.keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- открыть URL под курсором
 
+vim.opt.clipboard = "unnamedplus"
 -- Управление вкладками
 vim.keymap.set("n", "<leader>to", ":tabnew<CR>") -- открыть новую вкладку
 vim.keymap.set("n", "<leader>tx", ":tabclose<CR>") -- закрыть текущую вкладку

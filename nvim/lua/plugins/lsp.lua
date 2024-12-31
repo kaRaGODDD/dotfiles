@@ -26,13 +26,13 @@ lspconfig.rust_analyzer.setup {
 }
 
 
--- C++ и C
 lspconfig.clangd.setup {
-    capabilities = capabilities,
     cmd = { "clangd", "--background-index" },
-    filetypes = { "c", "cpp", "objc", "objcpp" },
-    root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git") or vim.fn.getcwd(),
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git") or vim.fn.getcwd(),
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
+
 -- Go
 lspconfig.gopls.setup {}
 
@@ -52,9 +52,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
         local opts = {buffer = ev.buf}
-        vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
+        -- vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+
+        vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gs', vim.lsp.buf.implementation, opts)
+        -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
         vim.keymap.set('n', '<Leader>s', vim.lsp.buf.signature_help, opts)
         -- vim.keymap
         --     .set('n', '<Leader>sa', vim.lsp.buf.add_workspace_folder, opts)
